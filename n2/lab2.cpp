@@ -4,7 +4,8 @@ using namespace std;
 class Circle
 {
 public:
-    Circle(float x=0.0f, float y=0.0f, float radius=1.0f);
+    Circle();
+    Circle(float x, float y, float radius);
     Circle(const Circle &circle_for_copy);
     void define_dot(float x, float y);
     void print();
@@ -27,9 +28,12 @@ int main()
     circle2.print();
     circle2.define_dot(5,5);
 
+    
     Circle circle3(circle1);
     circle3.print();
     circle3.define_dot(-5,-5);
+
+    
 
     return 0;
 }
@@ -44,9 +48,14 @@ void Circle::define_dot(float x, float y)
 }
 
 void Circle::print(){
-    cout << "Cirlce params: \n" << "Xo = " << xo << "\nYo = " << yo << "\n radius = " << r << endl;
+    cout << "Cirlce params: \n" << "Xo = " << xo << "\nYo = " << yo << "\nradius = " << r << endl;
 }
 
+Circle::Circle(){
+    xo = 0;
+    yo=0;
+    r = 1;
+}
 Circle::Circle(float x, float y, float radius)
 {
     xo = x;
@@ -54,7 +63,8 @@ Circle::Circle(float x, float y, float radius)
     if (radius > 0){
         r = radius;
     } else {
-        cout << "ERROR: radius must be positive"<< endl;
+        cout << "ERROR: radius must be positive. Use default value"<< endl;
+        r = 1.0f;
     }
 }
 
